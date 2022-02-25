@@ -34,6 +34,7 @@
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{verbatim}
 \usepackage{titling}
+\usepackage{hyperref}
 %\usepackage{rotating} %PRIDANY PACKAGE
 %\usepackage{booktabs} %PRIDANY PACKAGE
 %\usepackage{multirow}%PRIDANY PACKAGE
@@ -88,22 +89,28 @@ Cvičiaci: & Ing. Marek Galinski, PhD.
 \end{center}
 
 \section{Zadanie}
-\section{Riešenie zadania}
+Sprevádzkovanie SIP Proxy, ktorá umožní prepájanie a realizáciu hovorov medzi štandardnými SIP klientami.
 
-\begin{enumerate}[label=\textbf{\arabic*})]
-	\item X
-\end{enumerate}
+Na implementáciu SIP Proxy si môžete zvoliť akýkoľvek programovací jazyk a použiť akúkoľvek SIP knižnicu, ktorá pre daný programovací jazyk existuje. Vo výsledku však musíte spúšťať “váš kód”, v ktorom sú zakomponované knižnice, ktoré poskytujú funkcionalitu SIP Proxy. Hovor musí byť realizovaný medzi dvomi fyzickými zariadeniami v rámci LAN siete
 
+
+\textbf{Povinné funkcionality}
 \begin{enumerate}[label=(\alph*)]
-	\item X
+	\item Registrácia účastníka (bez nutnosti autentifikácie) 
+	\item Vytočenie hovoru a zvonenie na druhej strane 
+	\item Prijatie hovoru druhou stranou, fungujúci hlasový hovor 
+	\item Ukončenie hlasového hovoru (prijatého aj neprijatého) 
 \end{enumerate}
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[scale=1, width=\textwidth]{FrameTypes.drawio.pdf}
-%	\caption{Typy rámcov}
-%\end{figure}
 
+\textbf{Doplnkové funkcionality}
+\begin{enumerate}[label=(\alph*)]
+	\item Možnosť zrealizovať konferenčný hovor (aspoň 3 účastníci) 
+	\item Možnosť presmerovať hovor 
+	\item Možnosť realizovať videohovor 
+	\item Logovanie “denníka hovorov”
+	\item Úprava SIP stavových kódov v zdrojovom kóde proxy
+\end{enumerate}
 
 %\thispagestyle{fancy}
 \section{Záver}
@@ -112,3 +119,17 @@ Cvičiaci: & Ing. Marek Galinski, PhD.
 \bibliographystyle{plain}
 \bibliography{zdroje}
 \end{document}
+
+%\begin{enumerate}[label=\textbf{\arabic*})]
+%	\item X
+%\end{enumerate}
+
+%\begin{enumerate}[label=(\alph*)]
+%	\item X
+%\end{enumerate}
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[scale=1, width=\textwidth]{FrameTypes.drawio.pdf}
+%	\caption{Typy rámcov}
+%\end{figure}
