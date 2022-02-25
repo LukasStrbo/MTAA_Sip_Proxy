@@ -1,0 +1,6 @@
+./venv
+./.idea
+./pycharm
+
+proxy.log
+call_log.txt
