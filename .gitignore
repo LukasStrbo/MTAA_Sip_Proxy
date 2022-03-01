@@ -1,6 +1,8 @@
-./venv
-./.idea
-./pycharm
+**/venv
+**/.idea
+**/pycharm
+**/__pycache__
+**/*minted*
 
 proxy.log
 call_log.txt
