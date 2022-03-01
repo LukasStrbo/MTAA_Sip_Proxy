@@ -18,7 +18,7 @@ import re
 import time
 import logging
 import json
-from loguru import logger
+# from loguru import logger
 
 HOST, PORT = "192.168.0.105", 5070
 
@@ -26,6 +26,8 @@ rx_ringing = re.compile("^SIP/2.0 180.*")
 rx_decline = re.compile("^SIP/2.0 603.*")
 rx_ok = re.compile("^SIP/2.0 200.*")
 rx_terminated = re.compile("^SIP/2.0 487.*")
+rx_busy_here = re.compile("^SIP/2.0 486.*")
+
 
 rx_register = re.compile("^REGISTER")
 rx_invite = re.compile("^INVITE")
@@ -96,7 +98,6 @@ def showtime():
 
 
 class CallLog:
-    duration = 0
     call_id = ""
     fromm = ""
     to = ""
@@ -150,42 +151,44 @@ def call_log(data):
     log = find_call_id(call_id)
 
     if rx_ringing.search(req_uri):
-        logger.debug("Ringing")
+        # logger.debug("Ringing")
         fromm = rx_uri.search(data[find_in_data(rx_from, data)]).group(0)
         to = rx_uri.search(data[find_in_data(rx_to, data)]).group(0)
         start_ring = format_time()
         call = CallLog(call_id, fromm, to, start_ring)
         call_log_store.append(call)
-
-    elif rx_decline.search(req_uri):
-        logger.debug("Declined")
-        if log:
+    elif log:
+        if rx_decline.search(req_uri):
+        # logger.debug("Declined")
             log.end = format_time()
             log.status = "Declined"
             write_to_file(log)
             call_log_store.remove(log)
 
-    elif rx_terminated.search(req_uri):
-        logger.debug("Terminated")
-        logger.info(data)
-        if log:
+        elif rx_terminated.search(req_uri):
+            # logger.debug("Terminated")
+            # logger.info(data)
             log.end = format_time()
             log.status = "Terminated by caller"
             write_to_file(log)
             call_log_store.remove(log)
 
-    elif rx_bye.search(req_uri):
-        logger.debug("BYE")
-        if log:
+        elif rx_busy_here.search(req_uri):
+            log.end = format_time()
+            log.status = "Not Answered"
+            write_to_file(log)
+            call_log_store.remove(log)
+
+        elif rx_bye.search(req_uri):
+            # logger.debug("BYE")
             log.end = format_time()
             log.status = "Completed - Hungup"
             write_to_file(log)
             call_log_store.remove(log)
 
-    elif rx_ok.search(req_uri):
-        logger.debug("OK")
-        logger.info(data)
-        if log:
+        elif rx_ok.search(req_uri):
+            # logger.debug("OK")
+            # logger.info(data)
             log.start = format_time()
 
 

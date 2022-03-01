@@ -3,6 +3,8 @@
   "180 Ringing": "180 Zvonenie",
   "181 Call is Being Forwarded": "181 Hovor je presmerovany",
   "182 Queued": "182 V rade",
-  "486 Busy Here": "486 Obsadene"
+  "486 Busy here": "486 Zaneprazdneny",
+  "487 Request terminated": "487 Poziadavka zrusena",
+  "603 Decline": "603 Obsadene"
 }
 
